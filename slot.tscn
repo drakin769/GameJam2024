@@ -15,9 +15,7 @@ script = ExtResource("1_k2k18")
 modulate = Color(0.00476504, 0.552825, 0.75926, 1)
 texture = ExtResource("2_840rj")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="Label" type="Label" parent="Area2D"]
+[node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = -100.0
 offset_top = -25.0
@@ -28,6 +26,8 @@ theme_override_font_sizes/font_size = 25
 text = "TEST"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_0etul")
