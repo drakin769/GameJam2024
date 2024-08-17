@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://co31uua5lqah3"]
+
+[ext_resource type="Script" path="res://control_instruction.gd" id="1_yvtmr"]
+[ext_resource type="PackedScene" uid="uid://c8b40isxv7bp5" path="res://Instruction.tscn" id="2_l5qpr"]
+
+[node name="ControlInstruction" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_yvtmr")
+
+[node name="Instruction" parent="." instance=ExtResource("2_l5qpr")]
+position = Vector2(101, 25)
