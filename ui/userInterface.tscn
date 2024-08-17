@@ -1,10 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://km6kufih6kn"]
+[gd_scene load_steps=3 format=3 uid="uid://km6kufih6kn"]
 
-[ext_resource type="Texture2D" uid="uid://t528euewrm17" path="res://images/OLED_Screen_4.png" id="1_6vjbd"]
 [ext_resource type="PackedScene" uid="uid://ruehn53ruu7l" path="res://game.tscn" id="1_qqseu"]
-[ext_resource type="Texture2D" uid="uid://cqoxd7lskaums" path="res://images/Monitor_1-empty.png" id="2_l7d2p"]
-[ext_resource type="Script" path="res://game.gd" id="2_qgmd8"]
-[ext_resource type="FontFile" uid="uid://dy4xs8sql7vfc" path="res://fonts/Mx437_IBM_BIOS.ttf" id="3_6qmbl"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vnx8p"]
 
@@ -23,47 +19,14 @@ material = SubResource("CanvasItemMaterial_vnx8p")
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.435
-offset_bottom = 0.119965
+anchor_bottom = 0.5
+offset_bottom = -42.0
 grow_horizontal = 2
 
 [node name="consoleDisplay" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
-
-[node name="OledScreen4" type="Sprite2D" parent="HBoxContainer/consoleDisplay"]
-visible = false
-texture_filter = 1
-position = Vector2(284, 140)
-scale = Vector2(8.75, 8.75)
-texture = ExtResource("1_6vjbd")
-
-[node name="Monitor1-empty" type="Sprite2D" parent="HBoxContainer/consoleDisplay"]
-texture_filter = 1
-position = Vector2(286, 141)
-scale = Vector2(8.78125, 8.78125)
-texture = ExtResource("2_l7d2p")
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/consoleDisplay"]
-layout_mode = 2
-theme_override_constants/margin_left = 21
-theme_override_constants/margin_top = 18
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 16
-
-[node name="Text" type="TextEdit" parent="HBoxContainer/consoleDisplay/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/word_highlighted_color = Color(5.72756e-06, 0.615319, 7.70092e-07, 1)
-theme_override_colors/font_placeholder_color = Color(0.234517, 0.419662, 0.210766, 1)
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_6qmbl")
-theme_override_font_sizes/font_size = 20
-text = "> yolooo
-> I need moar paperclips"
-placeholder_text = "hi hi"
 
 [node name="PaperDisplay" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -72,14 +35,13 @@ size_flags_horizontal = 3
 [node name="PlayArea" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.434
+anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -0.231995
+offset_top = -43.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
 
 [node name="Game" parent="PlayArea" instance=ExtResource("1_qqseu")]
-position = Vector2(141, -253)
-script = ExtResource("2_qgmd8")
+position = Vector2(0, -281)

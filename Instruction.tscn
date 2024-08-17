@@ -5,18 +5,16 @@
 [ext_resource type="Texture2D" uid="uid://bp1dyjgtrim2d" path="res://images/instruction_block.png" id="2_e8nh6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0etul"]
-size = Vector2(200, 50)
+size = Vector2(200, 44)
 
-[node name="Instruction" type="Node2D"]
-position = Vector2(1, -1)
+[node name="Instuction" type="Area2D"]
 script = ExtResource("1_u1kga")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -1)
 texture = ExtResource("2_e8nh6")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="Label" type="Label" parent="Area2D"]
+[node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = -100.0
 offset_top = -25.0
@@ -29,9 +27,11 @@ text = "TEST"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_0etul")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

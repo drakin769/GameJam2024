@@ -10,7 +10,7 @@ var spawnpoint
 var y_boundry = 645
 var x_boundry = 1150
 var occupied = false
-var instruction
+var instructions = []
 var number_overlapping
 #
 #func _on_area_2d_mouse_entered():
@@ -50,16 +50,21 @@ func _process(delta):
 func givename(proposedname):
 	blockname = proposedname
 
-func _on_area_2d_body_entered(body):
-	occupied = true
-	instruction = body
-	if body.has_method("is_instruction"):
-		var occupied = true
-		body.in_slot= true
 
-func _on_area_2d_body_exited(body):
-	occupied = false
-	instruction = null
-	if body.has_method("is_instruction"):
-		var occupied = false
-		body.in_slot= false
+func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	instructions.append(area)
+	#instruction.slot = self
+	#if not instructions.is_empty:
+		#occupied = true
+		#print("occupied = true")
+	instructions[0].in_slot= true
+	instructions[0].snap_to_location = global_position
+
+
+func _on_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
+	if instructions[0] == area:
+		if instructions[0].has_method("is_instruction"):
+			occupied = false
+			print("occupied = false")
+			instructions[0].in_slot= false
+		instructions.pop_front()
