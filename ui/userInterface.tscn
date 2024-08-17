@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://km6kufih6kn"]
+[gd_scene load_steps=8 format=3 uid="uid://km6kufih6kn"]
 
 [ext_resource type="Texture2D" uid="uid://t528euewrm17" path="res://images/OLED_Screen_4.png" id="1_6vjbd"]
 [ext_resource type="PackedScene" uid="uid://ruehn53ruu7l" path="res://game.tscn" id="1_qqseu"]
 [ext_resource type="Texture2D" uid="uid://cqoxd7lskaums" path="res://images/Monitor_1-empty.png" id="2_l7d2p"]
 [ext_resource type="FontFile" uid="uid://dy4xs8sql7vfc" path="res://fonts/Mx437_IBM_BIOS.ttf" id="3_6qmbl"]
+[ext_resource type="Script" path="res://ui/rich_text_label.gd" id="4_dqni0"]
+[ext_resource type="Script" path="res://ui/text.gd" id="4_hvxiw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vnx8p"]
 
@@ -63,10 +65,19 @@ theme_override_font_sizes/font_size = 20
 text = "> yolooo
 > I need moar paperclips"
 placeholder_text = "hi hi"
+script = ExtResource("4_hvxiw")
+
+[node name="Timer" type="Timer" parent="HBoxContainer/consoleDisplay/MarginContainer/Text"]
 
 [node name="PaperDisplay" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="PaperText" type="RichTextLabel" parent="HBoxContainer/PaperDisplay"]
+unique_name_in_owner = true
+layout_mode = 2
+scroll_following = true
+script = ExtResource("4_dqni0")
 
 [node name="PlayArea" type="PanelContainer" parent="."]
 layout_mode = 1
