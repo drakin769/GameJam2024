@@ -1,18 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8b40isxv7bp5"]
+[gd_scene load_steps=5 format=3 uid="uid://otkol5tfnscv"]
 
-[ext_resource type="FontFile" uid="uid://cho3fvc1utjl8" path="res://fonts/makemore.ttf" id="1_bt01f"]
-[ext_resource type="Script" path="res://instruction.gd" id="1_u1kga"]
-[ext_resource type="Texture2D" uid="uid://bp1dyjgtrim2d" path="res://images/instruction_block.png" id="2_e8nh6"]
+[ext_resource type="Script" path="res://slot.gd" id="1_k2k18"]
+[ext_resource type="Texture2D" uid="uid://cyqf7cbjbh435" path="res://images/test_instruction.png" id="2_840rj"]
+[ext_resource type="FontFile" uid="uid://cho3fvc1utjl8" path="res://fonts/makemore.ttf" id="3_4410g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0etul"]
 size = Vector2(200, 50)
 
-[node name="Instruction" type="Node2D"]
+[node name="slot" type="Node2D"]
 position = Vector2(1, -1)
-script = ExtResource("1_u1kga")
+script = ExtResource("1_k2k18")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_e8nh6")
+modulate = Color(0.00476504, 0.552825, 0.75926, 1)
+texture = ExtResource("2_840rj")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -22,8 +23,7 @@ offset_left = -100.0
 offset_top = -25.0
 offset_right = 100.0
 offset_bottom = 25.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_bt01f")
+theme_override_fonts/font = ExtResource("3_4410g")
 theme_override_font_sizes/font_size = 25
 text = "TEST"
 horizontal_alignment = 1
@@ -33,5 +33,6 @@ vertical_alignment = 1
 shape = SubResource("RectangleShape2D_0etul")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

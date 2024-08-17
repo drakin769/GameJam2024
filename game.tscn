@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://ruehn53ruu7l"]
+[gd_scene load_steps=3 format=3 uid="uid://ruehn53ruu7l"]
 
 [ext_resource type="PackedScene" uid="uid://cpkbr2wd73xv5" path="res://level.tscn" id="1_mdpy2"]
+[ext_resource type="Script" path="res://game.gd" id="1_sjfd6"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_sjfd6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
