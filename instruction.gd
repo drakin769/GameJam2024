@@ -6,6 +6,8 @@ var unlocked = true
 	#hard shut down it from moving, like if an instruction is left there for a puzzle, or at end of level
 var offset: Vector2
 var blockname = "TEST"
+var y_boundry = 645
+var x_boundry = 1150
 
 func _on_area_2d_mouse_entered():
 	if not global.is_dragging:
@@ -27,5 +29,15 @@ func _process(delta):
 			global_position=get_global_mouse_position() - offset
 		elif Input.is_action_just_released("click"):
 			global.is_dragging = false
+			
+		#STAY INSIDE THE BOX YE BASTARD!!!!
+		if global_position.y > y_boundry:
+			global_position.y = y_boundry
+		if global_position.y < 0:
+			global_position.y = 0
+		if global_position.x > x_boundry:
+			global_position.x = x_boundry
+		if global_position.x < 0:
+			global_position.x = 0
 func givename(proposedname):
 	blockname = proposedname
