@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8b40isxv7bp5"]
+
+[ext_resource type="FontFile" uid="uid://cho3fvc1utjl8" path="res://fonts/makemore.ttf" id="1_bt01f"]
+[ext_resource type="Texture2D" uid="uid://cyqf7cbjbh435" path="res://images/test_instruction.png" id="1_dvltv"]
+[ext_resource type="Script" path="res://instruction.gd" id="1_u1kga"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0etul"]
+size = Vector2(200, 50)
+
+[node name="Instruction" type="Node2D"]
+position = Vector2(1, -1)
+script = ExtResource("1_u1kga")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dvltv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Label" type="Label" parent="Area2D"]
+unique_name_in_owner = true
+offset_left = -100.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("1_bt01f")
+theme_override_font_sizes/font_size = 25
+text = "TEST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0etul")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ruehn53ruu7l"]
+
+[ext_resource type="PackedScene" uid="uid://cpkbr2wd73xv5" path="res://level.tscn" id="1_mdpy2"]
+
+[node name="Game" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Level" parent="CanvasLayer" instance=ExtResource("1_mdpy2")]
+position = Vector2(8, -1)
