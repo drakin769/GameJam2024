@@ -12,6 +12,7 @@ var x_boundry = 1150
 var snap_to_location
 var in_slot = false
 var slot
+
 func _on_area_2d_mouse_entered():
 	if not global.is_dragging:
 		able_to_be_held = true
@@ -30,6 +31,7 @@ func go_home():
 func _process(delta):
 	if able_to_be_held:
 		if Input.is_action_just_pressed("click"):
+			global.add_text_to_dot_matrix("I just clicked the thingy!")
 			offset = get_global_mouse_position() - global_position
 			global.is_dragging = true
 			z_index = 99
@@ -39,6 +41,7 @@ func _process(delta):
 			global.is_dragging = false
 			z_index = 1
 			if slot != null:
+				global.nuke_dot_matrix()
 				slot.instructions.append(self)
 				print(slot.instructions.size())
 			if slot != null and slot.instructions.size()>1:
