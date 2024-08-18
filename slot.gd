@@ -17,7 +17,12 @@ var number_overlapping
 	#if not global.is_dragging:
 		#able_to_be_held = true
 	#$Area2D/Label.text = "*"+blockname+"*"
-
+func content():
+	if instructions.is_empty():
+		return "EMPTY"
+	else:
+		return instructions[0].blockname
+	
 func set_spawnpoint(proposedspawnpoint):
 	spawnpoint = proposedspawnpoint
 
@@ -28,6 +33,17 @@ func set_spawnpoint(proposedspawnpoint):
 	#$Area2D/Label.text = blockname
 
 func _process(delta):
+	
+	if Input.is_action_just_pressed("ui_accept") and OS.is_debug_build():
+		var x = instructions.size()
+		if x != 0:
+			while x > 0:
+				print("slot "+str(slot_number)+" has "+ instructions[x-1].blockname+" in it")
+				x-=1
+		else:
+			print("slot "+str(slot_number)+" is empty")
+		print("============================")
+
 	if instructions.size() > 1:
 		instructions.pop_front().go_home
 		
@@ -56,8 +72,8 @@ func givenumber(proposednumber):
 
 func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	#instructions.append(area)
-	print("added "+area.blockname)
-	print("total instructions: "+str(instructions.size()))
+	#print("added "+area.blockname)
+	#print("total instructions: "+str(instructions.size()))
 	#instruction.slot = self
 	#if not instructions.is_empty:
 		#occupied = true
@@ -66,7 +82,7 @@ func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index)
 	area.snap_to_location = global_position
 func eject():
 	if instructions.size()>1:
-		instructions.pop_front().go_home()
+		instructions[0].go_home()
 
 func _on_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	#if area.in_slot == true:
@@ -75,5 +91,5 @@ func _on_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	area.snap_to_location = area.spawnpoint
 	area.in_slot= false
 	area.slot = null
-	print(str("NOW Exiting SLOT: "+ str(slot_number)))
+	#print(str("NOW Exiting SLOT: "+ str(slot_number)))
 		#instructions.pop_front()

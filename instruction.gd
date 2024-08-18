@@ -16,6 +16,7 @@ var slot
 func _on_area_2d_mouse_entered():
 	if not global.is_dragging:
 		able_to_be_held = true
+		#print(blockname+ ": is able to be held")
 	$Area2D/Label.text = "["+blockname+"]"
 
 func set_spawnpoint(proposedspawnpoint):
@@ -24,17 +25,25 @@ func set_spawnpoint(proposedspawnpoint):
 func is_instruction():
 	pass
 func go_home():
-	slot = null
+	if slot != null:
+		if slot.instructions.size()>0:
+			slot.instructions.pop_front()
+	else:
+		slot = null
+	#snap_to_location = spawnpoint
 	global_position = spawnpoint
 
 
 func _process(delta):
 	if able_to_be_held:
 		if Input.is_action_just_pressed("click"):
-			global.add_text_to_dot_matrix("I just clicked the thingy!")
+			#global.add_text_to_dot_matrix("I just clicked the thingy!")
 			offset = get_global_mouse_position() - global_position
 			global.is_dragging = true
 			z_index = 99
+			if slot != null:
+				if slot.instructions.size()>0:
+					slot.instructions.pop_front()
 		if Input.is_action_pressed("click"):
 			global_position=get_global_mouse_position() - offset
 		elif Input.is_action_just_released("click"):
@@ -68,17 +77,20 @@ func givename(proposedname):
 func _on_mouse_entered():
 	if not global.is_dragging:
 		able_to_be_held = true
+		#print(blockname+ ": is able to be held from mouse entering")
+		
 		$Label.text = blockname.to_upper()
 
 
 func _on_mouse_exited():
 	if not global.is_dragging:
 		able_to_be_held = false
+		#printerr(blockname+ ": is not able to be held from mouse exiting")
 		$Label.text = blockname.to_lower()
 
 
 func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	if not area.has_method("is_instruction"):
 		slot = area
-		print(str("NOW ENTERING SLOT: "+ str(area.slot_number)))
+		#print(str("NOW ENTERING SLOT: "+ str(area.slot_number)))
 	pass

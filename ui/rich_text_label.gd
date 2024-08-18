@@ -27,7 +27,7 @@ func _on_add_text_from_signal(text: String):
 	#display_written_text(text)
 	pass
 
-func _display_written_text(text, animate: bool = false, typing_speed=0.1):
+func _display_written_text(text, animate: bool = false, typing_speed=0.05):
 	if cancel_writing:
 		lock_write = false
 		print("cancel")
