@@ -5,7 +5,7 @@ extends Node2D
 var unlocked = true 
 	#hard shut down it from moving, like if an instruction is left there for a puzzle, or at end of level
 var offset: Vector2
-var blockname = "TEST"
+var slot_number = 0
 var spawnpoint
 var y_boundry = 645
 var x_boundry = 1150
@@ -28,6 +28,9 @@ func set_spawnpoint(proposedspawnpoint):
 	#$Area2D/Label.text = blockname
 
 func _process(delta):
+	if instructions.size() > 1:
+		instructions.pop_front().go_home
+		
 	pass
 	#if able_to_be_held:
 		#if Input.is_action_just_pressed("click"):
@@ -47,24 +50,30 @@ func _process(delta):
 			#global_position.x = x_boundry
 		#if global_position.x < 0:
 			#global_position.x = 0
-func givename(proposedname):
-	blockname = proposedname
+func givenumber(proposednumber):
+	slot_number = proposednumber
 
 
 func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	instructions.append(area)
+	#instructions.append(area)
+	print("added "+area.blockname)
+	print("total instructions: "+str(instructions.size()))
 	#instruction.slot = self
 	#if not instructions.is_empty:
 		#occupied = true
 		#print("occupied = true")
-	instructions[0].in_slot= true
-	instructions[0].snap_to_location = global_position
-
+	#area.in_slot= true
+	area.snap_to_location = global_position
+func eject():
+	if instructions.size()>1:
+		instructions.pop_front().go_home()
 
 func _on_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	if instructions[0] == area:
-		if instructions[0].has_method("is_instruction"):
-			occupied = false
-			print("occupied = false")
-			instructions[0].in_slot= false
-		instructions.pop_front()
+	#if area.in_slot == true:
+		##occupied = false
+		#print("occupied = false")
+	area.snap_to_location = area.spawnpoint
+	area.in_slot= false
+	area.slot = null
+	print(str("NOW Exiting SLOT: "+ str(slot_number)))
+		#instructions.pop_front()

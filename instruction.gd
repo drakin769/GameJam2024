@@ -23,6 +23,7 @@ func set_spawnpoint(proposedspawnpoint):
 func is_instruction():
 	pass
 func go_home():
+	slot = null
 	global_position = spawnpoint
 
 
@@ -37,8 +38,15 @@ func _process(delta):
 		elif Input.is_action_just_released("click"):
 			global.is_dragging = false
 			z_index = 1
-			if in_slot:
+			if slot != null:
+				slot.instructions.append(self)
+				print(slot.instructions.size())
+			if slot != null and slot.instructions.size()>1:
+				slot.eject()
 				global_position=snap_to_location
+			elif slot != null:
+				global_position=snap_to_location
+				
 			else:
 				go_home()
 		#STAY INSIDE THE BOX YE BASTARD!!!!
@@ -48,8 +56,8 @@ func _process(delta):
 			global_position.y = global.border.y
 		if global_position.x > x_boundry:
 			global_position.x = x_boundry
-		if global_position.x < 0:
-			global_position.x = 0
+		#if global_position.x < -5:
+			#global_position.x = 0
 func givename(proposedname):
 	blockname = proposedname
 	%Label.text = proposedname
@@ -57,10 +65,17 @@ func givename(proposedname):
 func _on_mouse_entered():
 	if not global.is_dragging:
 		able_to_be_held = true
-		$Label.text = "["+blockname+"]"
+		$Label.text = blockname.to_upper()
 
 
 func _on_mouse_exited():
 	if not global.is_dragging:
 		able_to_be_held = false
-		$Label.text = blockname
+		$Label.text = blockname.to_lower()
+
+
+func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	if not area.has_method("is_instruction"):
+		slot = area
+		print(str("NOW ENTERING SLOT: "+ str(area.slot_number)))
+	pass

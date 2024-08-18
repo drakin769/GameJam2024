@@ -8,6 +8,7 @@
 size = Vector2(200, 44)
 
 [node name="Instuction" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_u1kga")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -31,7 +32,6 @@ vertical_alignment = 1
 position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_0etul")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
