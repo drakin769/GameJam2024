@@ -7,10 +7,10 @@
 			},
 			"Confirm Power": {
 				"text": ["Power Confirmed"],
-				"next_level": "second"
+				"next_level": "Try To Move"
 			},
 			"???":{
-				"text": ["What is it even doing?","...","Am I failed scientist?"],
+				"text": ["What is it even doing?","...","Am I a failed scientist?"],
 				"next_level": "first"
 			}
 		},
@@ -20,25 +20,20 @@
 		],
 		"number_of_slots": 1
 	},
-	"second": {
+	"Try To Move": {
 		"solutions": {
-			"on left:on right": {
-				"text": ["We be gaming people!"],
-				"next_level": "first"
-			},
-			"on right:on left": {
-				"text": ["oooo so close!"],
-				"next_level": "second"
-			},
-			"EMPTY:EMPTY": {
-				"text": ["...","......","Are... are you there?"],
-				"next_level": "second"
-			}
+				"block:block": 
+				{
+					"text": ["We be gaming people!"],
+					"next_level": "first"
+				}
 		},
-		"building_blocks": [
-			"on left",
-			"on right"
-		],
+		"building_blocks": 
+			[
+			"Move:Internals",
+			"block"
+			],
+			
 		"number_of_slots": 2
 	}
 }
