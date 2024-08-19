@@ -12,5 +12,5 @@ func add_text_to_dot_matrix(new_text: String):
 ## Will nuke all text from Dot matrix component.
 signal dot_matrix_nuke_text()
 func nuke_dot_matrix():
-	print("triger global text add")
+	print("triger global text nuke")
 	dot_matrix_nuke_text.emit()
