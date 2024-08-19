@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://km6kufih6kn"]
+[gd_scene load_steps=9 format=3 uid="uid://km6kufih6kn"]
 
 [ext_resource type="PackedScene" uid="uid://ruehn53ruu7l" path="res://game.tscn" id="1_qqseu"]
 [ext_resource type="PackedScene" uid="uid://uiju2xhjp1eb" path="res://images/monitor-silhouette.tscn" id="2_5vvm5"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dy4xs8sql7vfc" path="res://fonts/Mx437_IBM_BIOS.ttf" id="3_6qmbl"]
 [ext_resource type="Script" path="res://ui/rich_text_label.gd" id="4_dqni0"]
 [ext_resource type="Script" path="res://ui/text.gd" id="4_hvxiw"]
+[ext_resource type="PackedScene" uid="uid://cn2tr6txdw08t" path="res://gameElements/volume_slider.tscn" id="5_n5lys"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vnx8p"]
 
@@ -80,8 +81,14 @@ size_flags_horizontal = 3
 [node name="PaperText" type="RichTextLabel" parent="HBoxContainer/DotMatrixPaperDisplay"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_6qmbl")
 scroll_following = true
 script = ExtResource("4_dqni0")
+
+[node name="Volume_slider" parent="HBoxContainer/DotMatrixPaperDisplay" instance=ExtResource("5_n5lys")]
+layout_mode = 2
+bus_name = "Master"
 
 [node name="PlayArea" type="PanelContainer" parent="."]
 layout_mode = 1

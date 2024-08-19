@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn2tr6txdw08t"]
+
+[ext_resource type="Script" path="res://gameElements/volume_slider.gd" id="1_0lfnc"]
+
+[node name="Volume_slider" type="HSlider"]
+offset_right = 8.0
+offset_bottom = 16.0
+step = 0.001
+script = ExtResource("1_0lfnc")

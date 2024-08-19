@@ -20,7 +20,7 @@ func _on_add_text_from_signal(text: String):
 	#display_written_text(text)
 	pass
 
-func _display_written_text(text, animate: bool = false, typing_speed=0.05):
+func _display_written_text(text, animate: bool = false, typing_speed=0.03):
 	if cancel_writing:
 		lock_write = false
 		print("cancel")
@@ -34,7 +34,9 @@ func _display_written_text(text, animate: bool = false, typing_speed=0.05):
 		return
 
 	lock_write = true
-
+	
+	#add prefix :p
+	paper_text.add_text("> ")
 	var length = paper_text.get_parsed_text().length();
 	
 	# We first set visible characters to the existing text,
@@ -74,7 +76,7 @@ func _consume_from_text_queue():
 		var text_object = text_queue.pop_back()
 		_display_written_text(text_object.text, true, text_object.typing_speed)
 
-func _add_text_to_queue(string: String, typing_speed: float = 0.1):
+func _add_text_to_queue(string: String, typing_speed: float = 0.03):
 	# any new assignment to text, should cancel the cancel 👀
 	cancel_writing = false
 	if text_queue == null:
