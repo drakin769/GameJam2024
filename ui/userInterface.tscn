@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://km6kufih6kn"]
 
-[ext_resource type="Texture2D" uid="uid://t528euewrm17" path="res://images/OLED_Screen_4.png" id="1_6vjbd"]
 [ext_resource type="PackedScene" uid="uid://ruehn53ruu7l" path="res://game.tscn" id="1_qqseu"]
+[ext_resource type="PackedScene" uid="uid://uiju2xhjp1eb" path="res://images/monitor-silhouette.tscn" id="2_5vvm5"]
 [ext_resource type="Texture2D" uid="uid://cqoxd7lskaums" path="res://images/Monitor_1-empty.png" id="2_l7d2p"]
 [ext_resource type="FontFile" uid="uid://dy4xs8sql7vfc" path="res://fonts/Mx437_IBM_BIOS.ttf" id="3_6qmbl"]
 [ext_resource type="Script" path="res://ui/rich_text_label.gd" id="4_dqni0"]
@@ -25,20 +25,14 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_bottom = -42.0
+offset_bottom = -68.0
 grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="consoleDisplay" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
-
-[node name="OledScreen4" type="Sprite2D" parent="HBoxContainer/consoleDisplay"]
-visible = false
-texture_filter = 1
-position = Vector2(284, 140)
-scale = Vector2(8.75, 8.75)
-texture = ExtResource("1_6vjbd")
 
 [node name="Monitor1-empty" type="Sprite2D" parent="HBoxContainer/consoleDisplay"]
 texture_filter = 1
@@ -46,28 +40,38 @@ position = Vector2(286, 141)
 scale = Vector2(8.78125, 8.78125)
 texture = ExtResource("2_l7d2p")
 
+[node name="Node2D" type="Node2D" parent="HBoxContainer/consoleDisplay"]
+position = Vector2(22.275, 17.985)
+scale = Vector2(8.205, 7.685)
+
+[node name="silhouette" parent="HBoxContainer/consoleDisplay/Node2D" instance=ExtResource("2_5vvm5")]
+z_index = 0
+
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/consoleDisplay"]
+clip_contents = true
 layout_mode = 2
 theme_override_constants/margin_left = 21
 theme_override_constants/margin_top = 18
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 16
 
-[node name="Text" type="TextEdit" parent="HBoxContainer/consoleDisplay/MarginContainer"]
+[node name="MonitorText" type="RichTextLabel" parent="HBoxContainer/consoleDisplay/MarginContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_colors/word_highlighted_color = Color(5.72756e-06, 0.615319, 7.70092e-07, 1)
-theme_override_colors/font_placeholder_color = Color(0.234517, 0.419662, 0.210766, 1)
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_6qmbl")
-theme_override_font_sizes/font_size = 20
+theme_override_colors/default_color = Color(0, 1, 0, 0.203922)
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("3_6qmbl")
 text = "> yolooo
 > I need moar paperclips"
-placeholder_text = "hi hi"
 script = ExtResource("4_hvxiw")
 
-[node name="Timer" type="Timer" parent="HBoxContainer/consoleDisplay/MarginContainer/Text"]
+[node name="Timer" type="Timer" parent="HBoxContainer/consoleDisplay/MarginContainer/MonitorText"]
+
+[node name="Control" type="Control" parent="HBoxContainer/consoleDisplay/MarginContainer"]
+layout_mode = 2
 
 [node name="DotMatrixPaperDisplay" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -85,7 +89,7 @@ anchors_preset = -1
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -43.0
+offset_top = -68.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1

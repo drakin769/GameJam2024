@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://hxsqx6ji56el"]
+
+[ext_resource type="FontFile" uid="uid://cho3fvc1utjl8" path="res://fonts/makemore.ttf" id="1_6n1wy"]
+
+[resource]
+default_font = ExtResource("1_6n1wy")
+default_font_size = 51

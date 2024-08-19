@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://uiju2xhjp1eb"]
+
+[ext_resource type="Texture2D" uid="uid://dr1qo77wlg427" path="res://images/screenframes/pixil-layer-1.png" id="1_m7vs2"]
+[ext_resource type="Texture2D" uid="uid://c4sqtxrgad3mo" path="res://images/screenframes/pixil-layer-3.png" id="2_ehdpr"]
+[ext_resource type="Texture2D" uid="uid://c2doaiuglbdyl" path="res://images/screenframes/pixil-layer-4.png" id="3_uwx8e"]
+[ext_resource type="Texture2D" uid="uid://p1l7dpxr2bie" path="res://images/screenframes/pixil-layer-5.png" id="4_m53ub"]
+[ext_resource type="Script" path="res://images/animated_sprite_2d.gd" id="5_mf3bk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqu4k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ehdpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uwx8e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_m53ub")
+}],
+"loop": true,
+"name": &"screen-flimmer",
+"speed": 5.0
+}]
+
+[node name="silhouette" type="Sprite2D"]
+z_index = 1
+position = Vector2(32, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_m7vs2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+modulate = Color(1, 1, 1, 0.470588)
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_hqu4k")
+animation = &"screen-flimmer"
+script = ExtResource("5_mf3bk")

@@ -82,7 +82,6 @@ func _consume_from_text_queue():
 		_display_written_text(text_object.text, true, text_object.typing_speed)
 
 func _add_text_to_queue(string: String, typing_speed: float = 0.1):
-	print("add_text")
 	# any new assignment to text, should cancel the cancel 👀
 	cancel_writing = false
 	if text_queue == null:
