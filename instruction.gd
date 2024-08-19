@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var pickupSound = $PickupSound
-
+var variance = 1.0
 var is_held = false
 var able_to_be_held = false 
 	#used to dynamically turn on or off ability to be picked up, such as being turned off if something else is held.
@@ -39,6 +39,8 @@ func go_home():
 func _process(delta):
 	if able_to_be_held:
 		if Input.is_action_just_pressed("click"):
+			pickupSound.attenuation= randf_range(0.2,6.0)
+			pickupSound.pitch_scale= randf_range(1.10,1.50)
 			pickupSound.play()
 			#global.add_text_to_dot_matrix("I just clicked the thingy!")
 			offset = get_global_mouse_position() - global_position

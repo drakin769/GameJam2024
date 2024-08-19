@@ -72,7 +72,9 @@ func resolvelevel(solutions:Dictionary):
 	
 	if output in available_solutions:
 		print("It was solution : ", available_solutions[output])
-		global.add_text_to_dot_matrix(available_solutions[output].text)
+		#global.add_text_to_dot_matrix(available_solutions[output].text)
+		for string in available_solutions[output].text:
+			global.add_text_to_dot_matrix(string)
 		current_level= available_solutions[output].next_level
 	else:
 		global.add_text_to_dot_matrix("You have failed in a new and interesting way!")

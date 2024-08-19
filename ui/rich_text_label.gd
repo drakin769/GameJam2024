@@ -12,14 +12,7 @@ var cancel_writing = false
 func _ready() -> void:
 	global.connect("dot_matrix_add_text", _on_add_text_from_signal)
 	global.connect("dot_matrix_nuke_text", _on_nuke_all_text)
-	_add_text_to_queue("hi there")
-	_add_text_to_queue("How are you feeling?", 0.05)
-	_add_text_to_queue("What's your name?",0.05)
-	_add_text_to_queue("WELLL????", 0.03)
-	_add_text_to_queue("😡😡😡🤬🤬🤬", 0.01)
-	_add_text_to_queue("🤡", 0.01)
-	_add_text_to_queue("???")
-	pass # Replace with function body.
+
 
 func _on_add_text_from_signal(text: String):
 	print('attempting to add text')

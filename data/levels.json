@@ -2,15 +2,16 @@
 	"first": {
 		"solutions": {
 			"EMPTY": {
-				"text": "No Power detected. Retrying experiment",
+				"text": ["No Power detected. ", "Retrying experiment"],
 				"next_level": "first"
 			},
 			"Confirm Power": {
-				"text": "Power Confirmed",
+				"text": ["Power Confirmed"],
 				"next_level": "second"
 			},
 			"???":{
-				"text": "What is it even doing? Am I failed scientist?"
+				"text": ["What is it even doing?","...","Am I failed scientist?"],
+				"next_level": "first"
 			}
 		},
 		"building_blocks": [
@@ -22,15 +23,15 @@
 	"second": {
 		"solutions": {
 			"on left:on right": {
-				"text": "We be gaming people!",
+				"text": ["We be gaming people!"],
 				"next_level": "first"
 			},
 			"on right:on left": {
-				"text": "oooo so close!",
+				"text": ["oooo so close!"],
 				"next_level": "second"
 			},
 			"EMPTY:EMPTY": {
-				"text": "Are... are you there?",
+				"text": ["...","......","Are... are you there?"],
 				"next_level": "second"
 			}
 		},
