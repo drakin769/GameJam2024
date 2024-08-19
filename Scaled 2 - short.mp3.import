@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1fxis7li1641"
+path="res://.godot/imported/Scaled 2 - short.mp3-cfd3c96110fce0ac33006efdf3c60557.mp3str"
+
+[deps]
+
+source_file="res://Scaled 2 - short.mp3"
+dest_files=["res://.godot/imported/Scaled 2 - short.mp3-cfd3c96110fce0ac33006efdf3c60557.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

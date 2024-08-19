@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://djf6wq64prqlt"
+path="res://.godot/imported/short scale base fast -100-loop.mp3-7b56565ad511312469fb7f6f452e2ca2.mp3str"
+
+[deps]
+
+source_file="res://sounds/short scale base fast -100-loop.mp3"
+dest_files=["res://.godot/imported/short scale base fast -100-loop.mp3-7b56565ad511312469fb7f6f452e2ca2.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
