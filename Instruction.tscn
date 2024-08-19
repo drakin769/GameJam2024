@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8b40isxv7bp5"]
+[gd_scene load_steps=6 format=3 uid="uid://c8b40isxv7bp5"]
 
 [ext_resource type="FontFile" uid="uid://cho3fvc1utjl8" path="res://fonts/makemore.ttf" id="1_bt01f"]
 [ext_resource type="Script" path="res://instruction.gd" id="1_u1kga"]
 [ext_resource type="Texture2D" uid="uid://bp1dyjgtrim2d" path="res://images/instruction_block.png" id="2_e8nh6"]
+[ext_resource type="AudioStream" uid="uid://hi7ouk0x4an1" path="res://sounds/478196__jonnyruss01__click_2.wav" id="4_p1luy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0etul"]
 size = Vector2(200, 44)
@@ -31,6 +32,10 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_0etul")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_p1luy")
+pitch_scale = 1.35
 
 [connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
