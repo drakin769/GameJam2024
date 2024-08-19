@@ -12,12 +12,11 @@ var x_boundry = 1150
 var snap_to_location
 var in_slot = false
 var slot
-
-func _on_area_2d_mouse_entered():
-	if not global.is_dragging:
-		able_to_be_held = true
-		#print(blockname+ ": is able to be held")
-	$Area2D/Label.text = "["+blockname+"]"
+#func _on_area_2d_mouse_entered(): #obselete can be deleted
+	#if not global.is_dragging:
+		#able_to_be_held = true
+		##print(blockname+ ": is able to be held")
+	#$Area2D/Label.text = "["+blockname+"]"
 
 func set_spawnpoint(proposedspawnpoint):
 	spawnpoint = proposedspawnpoint
@@ -78,8 +77,7 @@ func _on_mouse_entered():
 	if not global.is_dragging:
 		able_to_be_held = true
 		#print(blockname+ ": is able to be held from mouse entering")
-		
-		$Label.text = blockname.to_upper()
+		#$Label.text = blockname.to_upper()
 
 
 func _on_mouse_exited():

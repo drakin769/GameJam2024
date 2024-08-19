@@ -33,16 +33,16 @@ func set_spawnpoint(proposedspawnpoint):
 	#$Area2D/Label.text = blockname
 
 func _process(delta):
-	
-	if Input.is_action_just_pressed("ui_accept") and OS.is_debug_build():
-		var x = instructions.size()
-		if x != 0:
-			while x > 0:
-				print("slot "+str(slot_number)+" has "+ instructions[x-1].blockname+" in it")
-				x-=1
-		else:
-			print("slot "+str(slot_number)+" is empty")
-		print("============================")
+	#tool for displaying whats in each 	slot
+	#if Input.is_action_just_pressed("ui_accept") and OS.is_debug_build():
+		#var x = instructions.size()
+		#if x != 0:
+			#while x > 0:
+				#print("slot "+str(slot_number)+" has "+ instructions[x-1].blockname+" in it")
+				#x-=1
+		#else:
+			#print("slot "+str(slot_number)+" is empty")
+		#print("============================")
 
 	if instructions.size() > 1:
 		instructions.pop_front().go_home

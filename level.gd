@@ -19,11 +19,11 @@ var slot_spawn_point = [
 			]
 var instruction_counter = 0
 var slot_counter = 0
-var level = 1
 var nanopacket = []
 var block_box = []
 var available_solutions
-
+var current_level = "first"
+var levels = JSON.new()
 func clear_nanopacket():
 	while not nanopacket.is_empty():
 		nanopacket.pop_front().queue_free()
@@ -31,6 +31,10 @@ func clear_block_box():
 	while not block_box.is_empty():
 		block_box.pop_front().queue_free()
 			
+# probablyt overkill, but might need to add things later
+func clear_level():
+	clear_block_box()
+	clear_nanopacket()
 func run_nanopacket():
 	var nanonumber = 0
 	var output:String
@@ -45,6 +49,8 @@ func run_nanopacket():
 	print("Nanopacket is:" + output)
 	return output
 func _ready():
+	levels = file_load()
+	print(levels)
 	setlevel()
 	
 func _process(delta):
@@ -55,6 +61,8 @@ func _process(delta):
 	elif Input.is_action_just_pressed("w") and OS.is_debug_build():
 		resolvelevel(available_solutions)
 		print("nanopacket ran!")
+	elif Input.is_action_just_pressed("ui_accept") and OS.is_debug_build():
+		DisplayServer.window_set_title("Testing")
 	elif Input.is_action_just_pressed("e") and OS.is_debug_build():
 		setlevel()
 		
@@ -65,33 +73,25 @@ func resolvelevel(solutions:Dictionary):
 	if output in available_solutions:
 		print("It was solution : ", available_solutions[output])
 		global.add_text_to_dot_matrix(available_solutions[output].text)
+		current_level= available_solutions[output].next_level
 	else:
 		global.add_text_to_dot_matrix("You have failed in a new and interesting way!")
+	clear_level()
+	setlevel()
 func setlevel():
 	instruction_counter = 0
 	slot_counter = 0
-	if level == 1:
-		create_instruction("Repeat {")
-		create_instruction("Wiggle Left")
-		create_instruction("Wiggle Right")
-		create_instruction("}        ")
-		create_instruction("}        ")
-		create_instruction("}        ")
-		create_instruction("}        ")
-		create_instruction("}        ")
-		create_instruction("}        ")
-		create_instruction("{")
+	for n in levels[current_level].number_of_slots:
 		create_slot()
-		available_solutions={
-			"EMPTY":	{
-				"text": "HEY THIS IS EMPTY"
-				},
-			"{":
-				{
-				"text": "Really, you thought just a simple { was going to fix this shit?"
-				}
-			}
-
+	for x in levels[current_level].building_blocks:
+		create_instruction(x)
+	available_solutions= levels[current_level].solutions
+	#TODO: ADD in a check for certain levels to trigger the endgame
+func file_load():
+	var file = FileAccess.open("res://data/levels.gd", FileAccess.READ)
+	print(file.get_as_text())
+	var content = JSON.parse_string(file.get_as_text())
+	return content
 
 func create_instruction(blockname):
 	var new_block = preload("res://Instruction.tscn").instantiate() 
