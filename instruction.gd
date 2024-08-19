@@ -1,4 +1,7 @@
 extends Node2D
+
+@onready var pickupSound = $PickupSound
+
 var is_held = false
 var able_to_be_held = false 
 	#used to dynamically turn on or off ability to be picked up, such as being turned off if something else is held.
@@ -36,6 +39,7 @@ func go_home():
 func _process(delta):
 	if able_to_be_held:
 		if Input.is_action_just_pressed("click"):
+			pickupSound.play()
 			#global.add_text_to_dot_matrix("I just clicked the thingy!")
 			offset = get_global_mouse_position() - global_position
 			global.is_dragging = true
@@ -49,7 +53,8 @@ func _process(delta):
 			global.is_dragging = false
 			z_index = 1
 			if slot != null:
-				global.nuke_dot_matrix()
+				# TODO move this where it should actually go
+				#global.nuke_dot_matrix()
 				slot.instructions.append(self)
 				print(slot.instructions.size())
 			if slot != null and slot.instructions.size()>1:
