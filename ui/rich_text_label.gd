@@ -1,8 +1,9 @@
 extends RichTextLabel
 
 @onready var paper_text: RichTextLabel = %PaperText
+
 var text_queue: Array = []
-var length_letters = 0 
+var length_letters = 0
 var lock_write = false
 var seconds_between_text_lines = 1
 var TextEndtimer = SceneTreeTimer
@@ -13,9 +14,7 @@ func _ready() -> void:
 	global.connect("dot_matrix_add_text", _on_add_text_from_signal)
 	global.connect("dot_matrix_nuke_text", _on_nuke_all_text)
 
-
 func _on_add_text_from_signal(text: String):
-	print('attempting to add text')
 	_add_text_to_queue(text)
 	#display_written_text(text)
 	pass
@@ -23,7 +22,6 @@ func _on_add_text_from_signal(text: String):
 func _display_written_text(text, animate: bool = false, typing_speed=0.03):
 	if cancel_writing:
 		lock_write = false
-		print("cancel")
 		return
 
 	if lock_write:

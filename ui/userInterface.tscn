@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://km6kufih6kn"]
+[gd_scene load_steps=12 format=3 uid="uid://km6kufih6kn"]
 
 [ext_resource type="PackedScene" uid="uid://ruehn53ruu7l" path="res://game.tscn" id="1_qqseu"]
 [ext_resource type="PackedScene" uid="uid://uiju2xhjp1eb" path="res://images/monitor-silhouette.tscn" id="2_5vvm5"]
@@ -8,32 +8,43 @@
 [ext_resource type="Script" path="res://ui/text.gd" id="4_hvxiw"]
 [ext_resource type="PackedScene" uid="uid://cn2tr6txdw08t" path="res://gameElements/volume_slider.tscn" id="5_n5lys"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vnx8p"]
+[sub_resource type="Theme" id="Theme_v8tjn"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqb27"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lgcy"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu1y7"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[node name="Control" type="ColorRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme = SubResource("Theme_v8tjn")
+color = Color(1, 1, 1, 0)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 y_sort_enabled = true
-material = SubResource("CanvasItemMaterial_vnx8p")
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_bottom = -68.0
 grow_horizontal = 2
+theme_override_constants/separation = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="consoleDisplay" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_gqb27")
 
 [node name="Monitor1-empty" type="Sprite2D" parent="HBoxContainer/consoleDisplay"]
 texture_filter = 1
@@ -51,10 +62,6 @@ z_index = 0
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/consoleDisplay"]
 clip_contents = true
 layout_mode = 2
-theme_override_constants/margin_left = 21
-theme_override_constants/margin_top = 18
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 16
 
 [node name="MonitorText" type="RichTextLabel" parent="HBoxContainer/consoleDisplay/MarginContainer"]
 unique_name_in_owner = true
@@ -63,7 +70,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 1, 0, 0.203922)
-theme_override_constants/outline_size = 0
 theme_override_fonts/normal_font = ExtResource("3_6qmbl")
 text = "> yolooo
 > I need moar paperclips"
@@ -77,18 +83,23 @@ layout_mode = 2
 [node name="DotMatrixPaperDisplay" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6lgcy")
 
-[node name="PaperText" type="RichTextLabel" parent="HBoxContainer/DotMatrixPaperDisplay"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DotMatrixPaperDisplay"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="PaperText" type="RichTextLabel" parent="HBoxContainer/DotMatrixPaperDisplay/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_constants/line_separation = 10
 theme_override_fonts/normal_font = ExtResource("3_6qmbl")
 scroll_following = true
 script = ExtResource("4_dqni0")
-
-[node name="Volume_slider" parent="HBoxContainer/DotMatrixPaperDisplay" instance=ExtResource("5_n5lys")]
-layout_mode = 2
-bus_name = "Master"
 
 [node name="PlayArea" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -100,6 +111,23 @@ offset_top = -68.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_qu1y7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayArea"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayArea/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.724643, 0.724643, 0.724643, 1)
+text = "    Set volume: "
+
+[node name="Volume_slider" parent="PlayArea/HBoxContainer" instance=ExtResource("5_n5lys")]
+custom_minimum_size = Vector2(450, 29)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 0.4
+bus_name = "Master"
 
 [node name="Game" parent="PlayArea" instance=ExtResource("1_qqseu")]
 position = Vector2(0, -281)
