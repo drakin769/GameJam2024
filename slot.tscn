@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://otkol5tfnscv"]
 
 [ext_resource type="Script" path="res://slot.gd" id="1_k2k18"]
-[ext_resource type="Texture2D" uid="uid://cyqf7cbjbh435" path="res://images/test_instruction.png" id="2_840rj"]
 [ext_resource type="FontFile" uid="uid://cho3fvc1utjl8" path="res://fonts/makemore.ttf" id="3_4410g"]
+[ext_resource type="Texture2D" uid="uid://c6g3u5usibnmo" path="res://images/insetbutton.png" id="3_kfyns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0etul"]
 size = Vector2(108, 10)
@@ -24,8 +24,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.00476504, 0.552825, 0.75926, 1)
-texture = ExtResource("2_840rj")
+texture = ExtResource("3_kfyns")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-45, 0)
