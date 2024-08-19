@@ -1,0 +1,114 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhq2q1261jbxa"]
+
+[ext_resource type="Theme" uid="uid://hxsqx6ji56el" path="res://MakeMoreThemeHeader.tres" id="1_itd2w"]
+
+[sub_resource type="Theme" id="Theme_1lkua"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 37
+theme_override_constants/margin_bottom = 50
+
+[node name="CreditsLabel" type="Label" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme = ExtResource("1_itd2w")
+theme_type_variation = &"HeaderLarge"
+text = "CREDITS"
+
+[node name="ProgrammersLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_1lkua")
+theme_type_variation = &"HeaderLarge"
+text = "Programmers
+"
+
+[node name="programmers" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "FDNinja & Kittymoops
+"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_bottom = 38
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="ArtistsLabel" type="Label" parent="VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_1lkua")
+theme_type_variation = &"HeaderLarge"
+text = "Artists"
+
+[node name="Artists" type="Label" parent="VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Dominic & Kittymoops
+"
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 38
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer4"]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="VBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_1lkua")
+theme_type_variation = &"HeaderLarge"
+text = "Music/sound"
+
+[node name="Musicians" type="Label" parent="VBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Maria Puliafico"
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="Attritbutionlabel" type="Label" parent="VBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_1lkua")
+theme_type_variation = &"HeaderLarge"
+text = "Assets & Attribution"
+
+[node name="Attributions" type="Label" parent="VBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Name: AssetLink
+Name: AssetLink
+
+"
