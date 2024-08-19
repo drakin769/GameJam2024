@@ -50,7 +50,7 @@ func run_nanopacket():
 	return output
 func _ready():
 	levels = file_load()
-	print(levels)
+	#print(levels)
 	setlevel()
 	
 func _process(delta):
@@ -76,8 +76,10 @@ func resolvelevel(solutions:Dictionary):
 		current_level= available_solutions[output].next_level
 	else:
 		global.add_text_to_dot_matrix("You have failed in a new and interesting way!")
+	
 	clear_level()
 	setlevel()
+
 func setlevel():
 	instruction_counter = 0
 	slot_counter = 0
@@ -87,9 +89,9 @@ func setlevel():
 		create_instruction(x)
 	available_solutions= levels[current_level].solutions
 	#TODO: ADD in a check for certain levels to trigger the endgame
+
 func file_load():
-	var file = FileAccess.open("res://data/levels.gd", FileAccess.READ)
-	print(file.get_as_text())
+	var file = FileAccess.open("res://data/levels.json", FileAccess.READ)
 	var content = JSON.parse_string(file.get_as_text())
 	return content
 
