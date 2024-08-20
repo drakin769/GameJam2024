@@ -22,4 +22,7 @@ func _on_value_changed(value: float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if global.mute== true:
+		value=0
 	pass

@@ -13,6 +13,7 @@ collision_layer = 2
 script = ExtResource("1_u1kga")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
 position = Vector2(1, -1)
 texture = ExtResource("2_e8nh6")
 
@@ -30,6 +31,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
 position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_0etul")
 
@@ -37,7 +39,9 @@ shape = SubResource("RectangleShape2D_0etul")
 stream = ExtResource("4_p1luy")
 pitch_scale = 1.38
 attenuation = 0.26794
+area_mask = 2
 
 [connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

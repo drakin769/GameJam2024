@@ -2,296 +2,752 @@
 	"first": {
 		"solutions": {
 			"EMPTY": {
-				"text": ["No Power detected. ", "Retrying experiment"],
+				"text": [
+					"No Power detected. ",
+					"Retrying experiment"
+				],
 				"next_level": "first"
 			},
 			"confirm power": {
-				"text": ["Power Confirmed","Moving on to make sure it can go forward"],
+				"text": [
+					"Power Confirmed",
+					"Moving on to make sure it can go forward"
+				],
 				"next_level": "Try To Move"
 			},
-			"???":{
-				"text": ["What is it even doing?","...","Am I a failed scientist?"],
+			"???": {
+				"text": [
+					"What is it even doing?",
+					"...",
+					"Am I a failed scientist?"
+				],
 				"next_level": "first"
 			}
 		},
 		"building_blocks": [
-			"confirm power"
+			"confirm power",
+			"???"
 		],
 		"number_of_slots": 1
 	},
 	"Try To Move": {
 		"solutions": {
-				"wiggle left:wiggle left": 
-				{
-					"text": ["Looks like the nanobots are moving too far over to the left","Iterating..."],
-					"next_level": "Try To Move"
-				},
-				"wiggle right:wiggle right":
-				{
-					"text": ["Looks like the nanobots are moving too far over to the right","Trying it again..."],
-					"next_level": "Try To Move"
-				},
-				"wiggle right:wiggle left":
-				{
-					"text": ["Perfect. The nanobot now can move forward","Moving on to turning"],
-					"next_level": "turn left"
-				},
-				"wiggle left:wiggle right":
-				{
-					"text": ["Perfect. The nanobot now can move forward","Moving on to turning left"],
-					"next_level": "turn left"
-				}
+			"wiggle left:wiggle left": {
+				"text": [
+					"Looks like the nanobots are moving too far over to the left",
+					"Iterating..."
+				],
+				"next_level": "Try To Move"
+			},
+			"wiggle right:wiggle right": {
+				"text": [
+					"Looks like the nanobots are moving too far over to the right",
+					"Trying it again..."
+				],
+				"next_level": "Try To Move"
+			},
+			"wiggle right:wiggle left": {
+				"text": [
+					"Perfect. The nanobot now can move forward",
+					"Moving on to turning"
+				],
+				"next_level": "turn left"
+			},
+			"wiggle left:wiggle right": {
+				"text": [
+					"Perfect. The nanobot now can move forward",
+					"Moving on to turning left"
+				],
+				"next_level": "turn left"
+			}
 		},
-		"building_blocks": 
-			[
+		"building_blocks": [
 			"wiggle left",
 			"wiggle left",
 			"wiggle right",
-			"wiggle right",
-			],
-			
+			"wiggle right"
+		],
 		"number_of_slots": 2
 	},
 	"turn left": {
 		"solutions": {
-				"move forward:move forward": 
-				{
-					"text": ["Uh... well thats not right... ","Need it to just try turning left" ],
-					"next_level": "turn left 2"
-				},
-				"move forward:EMPTY": 
-				{
-					"text": ["Uh... well thats not right... ","Need it to just try turning left" ],
-					"next_level": "turn left 2"
-				},
-				"EMPTY:move forward:": 
-				{
-					"text": ["Uh... well thats not right... ","Need it to just try turning left" ],
-					"next_level": "turn left 2"
-				},
-				"wiggle left:wiggle left":
-				{
-					"text": ["Perfect, now just to check it going right."],
-					"next_level": "turn right"
-				},
-				"wiggle left:EMPTY":
-				{
-					"text": ["Little slow but it'll do, now just to check it going right."],
-					"next_level": "turn right"
-				},
-				"EMPTY:wiggle left":
-				{
-					"text": ["Little slow but it'll do, now just to check it going right."],
-					"next_level": "turn right"
-				},
-				"wiggle left:move forward":
-				{
-					"text": ["Turn is a bit wide but it'll do, now just to check it going right."],
-					"next_level": "turn right"
-				},
-				"move forward:wiggle left":
-				{
-					"text": ["Turn is a bit wide but it'll do, now just to check it going right."],
-					"next_level": "turn right"
-				},
-				"wiggle right:wiggle left":
-				{
-					"text": ["Uh... well thats not right... ","Need it to just try turning left" ],
-					"next_level": "turn left 2"
-				},
-				"wiggle left:wiggle right":
-				{
-					"text": ["Uh... well thats not right... ","Need it to just try turning left" ],
-					"next_level": "turn left 2"
-				},
-				"wiggle right:wiggle right":
-				{
-					"text": ["Eh... I mean it's a turn", "I can work with it.","Okay... now go \"right\""],
-					"next_level": "turn right 2"
-				},
-				"EMPTY:wiggle right":
-				{
-					"text": ["Eh... I mean it's a turn", "I can work with it.","Okay... now go \"right\""],
-					"next_level": "turn right 2"
-				},
-				"wiggle right:EMPTY":
-				{
-					"text": ["Eh... I mean it's a turn", "I can work with it.","Okay... now go \"right\""],
-					"next_level": "turn right 2"
-				}
+			"move forward:move forward": {
+				"text": [
+					"Uh... well thats not right... ",
+					"Need it to just try turning left"
+				],
+				"next_level": "turn left 2"
+			},
+			"move forward:EMPTY": {
+				"text": [
+					"Uh... well thats not right... ",
+					"Need it to just try turning left"
+				],
+				"next_level": "turn left 2"
+			},
+			"EMPTY:move forward:": {
+				"text": [
+					"Uh... well thats not right... ",
+					"Need it to just try turning left"
+				],
+				"next_level": "turn left 2"
+			},
+			"wiggle left:wiggle left": {
+				"text": [
+					"Perfect, now just to check it going right."
+				],
+				"next_level": "turn right"
+			},
+			"wiggle left:EMPTY": {
+				"text": [
+					"Little slow but it'll do, now just to check it going right."
+				],
+				"next_level": "turn right"
+			},
+			"EMPTY:wiggle left": {
+				"text": [
+					"Little slow but it'll do, now just to check it going right."
+				],
+				"next_level": "turn right"
+			},
+			"wiggle left:move forward": {
+				"text": [
+					"Turn is a bit wide but it'll do, now just to check it going right."
+				],
+				"next_level": "turn right"
+			},
+			"move forward:wiggle left": {
+				"text": [
+					"Turn is a bit wide but it'll do, now just to check it going right."
+				],
+				"next_level": "turn right"
+			},
+			"wiggle right:wiggle left": {
+				"text": [
+					"Uh... well thats not right... ",
+					"Need it to just try turning left"
+				],
+				"next_level": "turn left 2"
+			},
+			"wiggle left:wiggle right": {
+				"text": [
+					"Uh... well thats not right... ",
+					"Need it to just try turning left"
+				],
+				"next_level": "turn left 2"
+			},
+			"wiggle right:wiggle right": {
+				"text": [
+					"Eh... I mean it's a turn",
+					"I can work with it.",
+					"Okay... now go \"right\""
+				],
+				"next_level": "turn right 2"
+			},
+			"EMPTY:wiggle right": {
+				"text": [
+					"Eh... I mean it's a turn",
+					"I can work with it.",
+					"Okay... now go \"right\""
+				],
+				"next_level": "turn right 2"
+			},
+			"wiggle right:EMPTY": {
+				"text": [
+					"Eh... I mean it's a turn",
+					"I can work with it.",
+					"Okay... now go \"right\""
+				],
+				"next_level": "turn right 2"
+			}
 		},
-		
-		"building_blocks": 
-			[
+		"building_blocks": [
 			"wiggle left",
 			"wiggle left",
 			"wiggle right",
 			"wiggle right",
 			"move forward",
 			"move forward"
-			],
-			
-			"number_of_slots": 2
+		],
+		"number_of_slots": 2
 	},
 	"turn left 2": {
 		"solutions": {
-				"move forward:move forward": 
-				{
-					"text": ["Looks like it can only zoom along forward.", "Calling this a failure","Attempting to power up a new interation." ],
-					"next_level": "first"
-				},
-				"move forward:EMPTY": 
-				{
-					"text": ["Looks like it can only move along forward slowly.", "Calling this a failure","Attempting to power up a new interation." ],
-					"next_level": "first"
-				},
-				"EMPTY:move forward:": 
-				{
-					"text": ["Looks like it can only move along forward slowly.", "Calling this a failure","Attempting to power up a new interation." ],
-					"next_level": "first"
-				},
-				"wiggle left:wiggle left":
-				{
-					"text": ["Oh good, it figured it out.","Now to just to check it going right."],
-					"next_level": "turn right"
-				},
-				"wiggle left:EMPTY":
-				{
-					"text": ["Oh good, it figured it out.","Now to just to check it going right."],
-					"next_level": "turn right"
-				},
-				"EMPTY:wiggle left":
-				{
-					"text": ["Oh good, it figured it out.","Now to just to check it going right."],
-					"next_level": "turn right"
-				},
-				"wiggle left:move forward":
-				{
-					"text": ["Oh good, it figured it out.","Now to just to check it going right."],
-					"next_level": "turn right"
-				},
-				"move forward:wiggle left":
-				{
-					"text": ["Oh good, it figured it out.","Now to just to check it going right."],
-					"next_level": "turn right"
-				},
-				"wiggle right:wiggle left":
-				{
-					"text": ["Looks like it can only move along forward slowly.", "Calling this a failure","Attempting to power up a new interation." ],
-					"next_level": "first"
-				},
-				"wiggle left:wiggle right":
-				{
-					"text": ["Looks like it can only move along forward slowly.", "Calling this a failure","Attempting to power up a new interation." ],
-					"next_level": "first"
-				},
-				"wiggle right:wiggle right":
-				{
-					"text": ["Eh... I mean it's a turn", "I can work with it.","Okay... now go \"right\""],
-					"next_level": "turn right 2"
-				},
-				"EMPTY:wiggle right":
-				{
-					"text": ["Eh... I mean it's a turn", "I can work with it.","Okay... now go \"right\""],
-					"next_level": "turn right 2"
-				},
-				"wiggle right:EMPTY":
-				{
-					"text": ["Eh... I mean it's a turn", "I can work with it.","Okay... now go \"right\""],
-					"next_level": "turn right 2"
-				}
+			"move forward:move forward": {
+				"text": [
+					"Looks like it can only zoom along forward.",
+					"Calling this a failure",
+					"Attempting to power up a new interation."
+				],
+				"next_level": "first"
+			},
+			"move forward:EMPTY": {
+				"text": [
+					"Looks like it can only move along forward slowly.",
+					"Calling this a failure",
+					"Attempting to power up a new interation."
+				],
+				"next_level": "first"
+			},
+			"EMPTY:move forward:": {
+				"text": [
+					"Looks like it can only move along forward slowly.",
+					"Calling this a failure",
+					"Attempting to power up a new interation."
+				],
+				"next_level": "first"
+			},
+			"wiggle left:wiggle left": {
+				"text": [
+					"Oh good, it figured it out.",
+					"Now to just to check it going right."
+				],
+				"next_level": "turn right"
+			},
+			"wiggle left:EMPTY": {
+				"text": [
+					"Oh good, it figured it out.",
+					"Now to just to check it going right."
+				],
+				"next_level": "turn right"
+			},
+			"EMPTY:wiggle left": {
+				"text": [
+					"Oh good, it figured it out.",
+					"Now to just to check it going right."
+				],
+				"next_level": "turn right"
+			},
+			"wiggle left:move forward": {
+				"text": [
+					"Oh good, it figured it out.",
+					"Now to just to check it going right."
+				],
+				"next_level": "turn right"
+			},
+			"move forward:wiggle left": {
+				"text": [
+					"Oh good, it figured it out.",
+					"Now to just to check it going right."
+				],
+				"next_level": "turn right"
+			},
+			"wiggle right:wiggle left": {
+				"text": [
+					"Looks like it can only move along forward slowly.",
+					"Calling this a failure",
+					"Attempting to power up a new interation."
+				],
+				"next_level": "first"
+			},
+			"wiggle left:wiggle right": {
+				"text": [
+					"Looks like it can only move along forward slowly.",
+					"Calling this a failure",
+					"Attempting to power up a new interation."
+				],
+				"next_level": "first"
+			},
+			"wiggle right:wiggle right": {
+				"text": [
+					"Eh... I mean it's a turn",
+					"I can work with it.",
+					"Okay... now go \"right\""
+				],
+				"next_level": "turn right 2"
+			},
+			"EMPTY:wiggle right": {
+				"text": [
+					"Eh... I mean it's a turn",
+					"I can work with it.",
+					"Okay... now go \"right\""
+				],
+				"next_level": "turn right 2"
+			},
+			"wiggle right:EMPTY": {
+				"text": [
+					"Eh... I mean it's a turn",
+					"I can work with it.",
+					"Okay... now go \"right\""
+				],
+				"next_level": "turn right 2"
+			}
 		},
-		
-		"building_blocks": 
-			[
+		"building_blocks": [
 			"wiggle left",
 			"wiggle left",
 			"wiggle right",
 			"wiggle right",
 			"move forward",
 			"move forward"
-			],
-			
-			"number_of_slots": 2
+		],
+		"number_of_slots": 2
 	},
 	"turn right": {
 		"solutions": {
-				"move left:move forward": 
-				{
-					"text": ["Come on, other way..."],
-					"next_level": "turn right"
-				},
-				"move forward:EMPTY": 
-				{
-					"text": ["Wait...","Why would it...","This doesn't make any sense..."],
-					"next_level": "turn right"
-				},
-				"EMPTY:move forward:": 
-				{
-					"text": ["Wait...","Why would it...","This doesn't make any sense..."],
-					"next_level": "turn right"
-				},
-				"wiggle left:wiggle left":
-				{
-					"text": ["Come on, try the other way now","You can do it"],
-					"next_level": "turn right"
-				},
-				"move left:move left":
-				{
-					"text": ["Come on, try the other way now","You can do it"],
-					"next_level": "turn right"
-				},
-				"move left:EMPTY":
-				{
-					"text": ["Oh good, it figured it...","Wait, wrong way..."],
-					"next_level": "turn right"
-				},
-				"EMPTY:move turn":
-				{
-					"text": ["Oh good, it figured it...","Wait, wrong way..."],
-					"next_level": "turn right"
-				},
-				"move forward:wiggle left":
-				{
-					"text": ["Whoops","Wrong way"],
-					"next_level": "turn right"
-				},
-				"wiggle right:move left":
-				{
-					"text": ["It is trying...","just... stop trying to go left"],
-					"next_level": "turn right"
-				},
-				"move left:wiggle right":
-				{
-					"text": ["It is trying...","just... stop trying to go left"],
-					"next_level": "turn right"
-				},
-				"wiggle right:wiggle right":
-				{
-					"text": ["Eh... I mean it's a turn", "I can work with it.","Okay... now go \"right\""],
-					"next_level": "turn right 2"
-				},
-				"EMPTY:wiggle right":
-				{
-					"text": ["Eh... I mean it's a turn", "I can work with it.","Okay... now go \"right\""],
-					"next_level": "turn right 2"
-				},
-				"wiggle right:EMPTY":
-				{
-					"text": ["Eh... I mean it's a turn", "I can work with it.","Okay... now go \"right\""],
-					"next_level": "turn right 2"
-				}
+			"move left:move forward": {
+				"text": [
+					"Come on, other way..."
+				],
+				"next_level": "turn right"
+			},
+			"move forward:EMPTY": {
+				"text": [
+					"Wait...",
+					"Why would it...",
+					"This doesn't make any sense..."
+				],
+				"next_level": "turn right"
+			},
+			"EMPTY:move forward": {
+				"text": [
+					"Wait...",
+					"Why would it...",
+					"This doesn't make any sense..."
+				],
+				"next_level": "turn right"
+			},
+			"wiggle left:wiggle left": {
+				"text": [
+					"Come on, try the other way now",
+					"You can do it"
+				],
+				"next_level": "turn right"
+			},
+			"move left:move left": {
+				"text": [
+					"Come on, try the other way now",
+					"You can do it"
+				],
+				"next_level": "turn right"
+			},
+			"move left:EMPTY": {
+				"text": [
+					"Oh good, it figured it...",
+					"Wait, wrong way..."
+				],
+				"next_level": "turn right"
+			},
+			"EMPTY:move turn": {
+				"text": [
+					"Oh good, it figured it...",
+					"Wait, wrong way..."
+				],
+				"next_level": "turn right"
+			},
+			"move forward:wiggle left": {
+				"text": [
+					"Whoops",
+					"Wrong way"
+				],
+				"next_level": "turn right"
+			},
+			"wiggle right:move left": {
+				"text": [
+					"It is trying...",
+					"just... stop trying to go left"
+				],
+				"next_level": "turn right"
+			},
+			"move left:wiggle right": {
+				"text": [
+					"It is trying...",
+					"just... stop trying to go left"
+				],
+				"next_level": "turn right"
+			},
+			"wiggle right:wiggle right": {
+				"text": [
+					"Flawless",
+					"Need it to learn how to make a u turn"
+				],
+				"next_level": "u turn"
+			},
+			"EMPTY:wiggle right": {
+				"text": [
+					"Little slow, but it works",
+					"Need it to learn how to make a u turn"
+				],
+				"next_level": "u turn"
+			},
+			"wiggle right:EMPTY": {
+				"text": [
+					"Little slow, but it works",
+					"Need it to learn how to make a u turn"
+				],
+				"next_level": "u turn"
+			},
+			"move forward:wiggle right": {
+				"text": [
+					"Speedy, but it works",
+					"Need it to learn how to make a u turn"
+				],
+				"next_level": "u turn"
+			},
+			"wiggle right:move forward": {
+				"text": [
+					"Speedy, but it works",
+					"Need it to learn how to make a u turn"
+				],
+				"next_level": "u turn"
+			}
 		},
-		
-		"building_blocks": 
-			[
+		"building_blocks": [
 			"wiggle right",
 			"wiggle right",
 			"move forward",
 			"move left"
-			],
-			
-			"number_of_slots": 2
+		],
+		"number_of_slots": 2
+	},
+	"turn right 2": {
+		"solutions": {
+			"wiggle left:move forward": {
+				"text": [
+					"Sure, this work.",
+					"Flipping left and right so I don't drive myself nuts with this stupid thing",
+					"Now I'll need it to be able to perform a u-turn",
+					"should be easy"
+				],
+				"next_level": "u turn"
+			},
+			"move forward:EMPTY": {
+				"text": [
+					"Wait...",
+					"Why would it...",
+					"This doesn't make any sense..."
+				],
+				"next_level": "turn right"
+			},
+			"EMPTY:move forward:": {
+				"text": [
+					"Wait...",
+					"Why would it...",
+					"This doesn't make any sense..."
+				],
+				"next_level": "turn right"
+			},
+			"wiggle left:wiggle left": {
+				"text": [
+					"Sure, this work.",
+					"Flipping left and right so I don't drive myself nuts with this stupid thing",
+					"Now I'll need it to be able to perform a u-turn",
+					"should be easy"
+				],
+				"next_level": "u turn"
+			},
+			"wiggle left:EMPTY": {
+				"text": [
+					"Little slow, but this work.",
+					"Flipping left and right so I don't drive myself nuts with this stupid thing",
+					"Now I'll need it to be able to perform a u-turn",
+					"should be easy"
+				],
+				"next_level": "u turn"
+			},
+			"EMPTY:wiggle left": {
+				"text": [
+					"Little slow, but this work.",
+					"Flipping left and right so I don't drive myself nuts with this stupid thing",
+					"Now I'll need it to be able to perform a u-turn",
+					"should be easy"
+				],
+				"next_level": "u turn"
+			},
+			"move forward:wiggle left": {
+				"text": [
+					"Sure, this work.",
+					"Flipping left and right so I don't drive myself nuts with this stupid thing",
+					"Now I'll need it to be able to perform a u-turn",
+					"should be easy"
+				],
+				"next_level": "u turn"
+			},
+			"wiggle left:move \"left\"": {
+				"text": [
+					"It is trying...",
+					"just... pick a direction!"
+				],
+				"next_level": "turn right 2"
+			},
+			"move \"left\":wiggle left": {
+				"text": [
+					"It is trying...",
+					"just... pick a direction!"
+				],
+				"next_level": "turn right 2"
+			}
+		},
+		"building_blocks": [
+			"wiggle left",
+			"wiggle left",
+			"move forward",
+			"move \"left\""
+		],
+		"number_of_slots": 2
+	},
+	"get material": {
+		"solutions": {
+			"until:touching == true:loop {:move forward:}": {
+				"text": [
+					"Woah, actually got there",
+					"Now it needs to take in the material.",
+					"It should be able to rapidly grind it's head against it and break it down."
+				],
+				"next_level": "consume"
+			},
+			"EMPTY:EMPTY:loop {:move forward:}": {
+				"text": [
+					"Well thats just...",
+					"thats just moving forever",
+					"Returning to a previous version to try again",
+					"It needs move forward until it hits something."
+				],
+				"next_level": "consume"
+			},
+			"EMPTY:EMPTY:loop {:move right:}": {
+				"text": [
+					"Well thats just...",
+					"thats just spinning forever",
+					"Returning to a previous version to try again",
+					"It needs move forward until it hits something."
+				],
+				"next_level": "consume"
+			},
+			"EMPTY:EMPTY:loop {:move left:}": {
+				"text": [
+					"Well thats just...",
+					"thats just spinning forever",
+					"Returning to a previous version to try again",
+					"It needs move forward until it hits something."
+				],
+				"next_level": "consume"
+			},
+			"EMPTY:EMPTY:loop {:EMPTY:}": {
+				"text": [
+					"Well thats just...",
+					"dead...",
+					"Returning to a previous version to try again"
+				],
+				"next_level": "consume"
+			},
+			"EMPTY:EMPTY:loop {:}:EMPTY:EMPTY": {
+				"text": [
+					"Well thats just...",
+					"dead...",
+					"Returning to a previous version to try again"
+				],
+				"next_level": "consume"
+			}
+		},
+		"building_blocks": [
+			"touching == true",
+			"}",
+			"move left",
+			"until",
+			"move right",
+			"move forward",
+			"2loop {"
+		],
+		"number_of_slots": 5
+	},
+	"consume": {
+		"solutions": {
+			"until:touching != true:loop {:u turn:}": {
+				"text": [
+					"It is grinding away and consuming the material it'll need to start building!",
+					"now it's time to get it to work for real",
+					"This is what it's all been about.",
+					"Time to have it start making paperclips."
+				],
+				"next_level": "paperclip"
+			},
+			"until:touching != true:loop {:move right:}": {
+				"text": [
+					"It's trying but it isn't going fast enough",
+					"It needs to go at least twice as fast"
+				],
+				"next_level": "consume"
+			},
+			"until:touching != true:loop {:move left:}": {
+				"text": [
+					"It's trying but it isn't going fast enough",
+					"It needs to go at least twice as fast"
+				],
+				"next_level": "consume"
+			},
+			"until:touching != true:loop {:move forward:}": {
+				"text": [
+					"Well thats just pushing up against it as hard as it can",
+					"Won't be able to do much if it doesn't start grinding against it."
+				],
+				"next_level": "consume"
+			}
+		},
+		"building_blocks": [
+			"u turn",
+			"}",
+			"move left",
+			"move right",
+			"move forward",
+			"2loop {",
+			"1touching != true",
+			"0until"
+		],
+		"number_of_slots": 5
+	},
+	"u turn": {
+		"solutions": {
+			"move left:move left": {
+				"text": [
+					"Looks like it turned around successfully",
+					"Lets try getting some material"
+				],
+				"next_level": "consume"
+			},
+			"move right:move right": {
+				"text": [
+					"Looks like it turned around successfully",
+					"Lets try getting some material"
+				],
+				"next_level": "consume"
+			},
+			"move right:move left": {
+				"text": [
+					"This little $#@^",
+					"It really is just messing around with me isn't it?",
+					"I am on a deadline here and it is over here messing with me.",
+					"Too late to restart so just gotta itterate the AI and hope for the best"
+				],
+				"next_level": "consume"
+			},
+			"move left:move right": {
+				"text": [
+					"This little $#@^",
+					"It really is just messing around with me isn't it?",
+					"I am on a deadline here and it is over here messing with me.",
+					"Too late to restart so just gotta itterate the AI and hope for the best"
+				],
+				"next_level": "consume"
+			}
+		},
+		"building_blocks": [
+			"move left",
+			"move left",
+			"move right",
+			"move right"
+		],
+		"number_of_slots": 2
+	},
+	"paperclip": {
+		"solutions": {
+			"start printing:move forward:u turn:move forward:u turn:move forward:u turn:move forward:stop printing": {
+				"text": [
+					"That... is one beautiful looking paperclip",
+					"Looks like it's ready to help me with all of my office needs.",
+					"Only one thing left to have it do now:",
+					"Make more"
+				],
+				"next_level": "make more"
+			},
+			"start printing:EMPTY:EMPTY:EMPTY:EMPTY:EMPTY:EMPTY:EMPTY:stop printing": {
+				"text": [
+					"...",
+					"Did... did it die?",
+					"What the crap happened?!",
+					"We were so close to achieving paperclip!",
+					"$#@&...",
+					"Going to try rebooting it."
+				],
+				"next_level": "first 2"
+			},
+			"start printing:u turn:u turn:u turn:EMPTY:EMPTY:EMPTY:EMPTY:stop printing": {
+				"text": [
+					"That... is basically a tiny, crappy spring",
+					"I guess it tried",
+					"o7"
+				],
+				"next_level": "paperclip"
+			}
+		},
+		"building_blocks": [
+			"u turn",
+			"u turn",
+			"u turn",
+			"move forward",
+			"move forward",
+			"move forward",
+			"move forward",
+			"8stop printing",
+			"0start printing"
+		],
+		"number_of_slots": 9
+	},
+	"first 2": {
+		"solutions": {
+			"EMPTY": {
+				"text": [
+					"No Power detected. ",
+					"Retrying experiment"
+				],
+				"next_level": "first 2"
+			},
+			"confirm power": {
+				"text": [
+					"Power Confirmed",
+					"Moving on to make sure it can go forward",
+					"Glad to have it back, that was scary!"
+				],
+				"next_level": "paperclip"
+			},
+			"???": {
+				"text": [
+					"What is it even doing?",
+					"...",
+					"Am I a failed scientist?",
+					"...",
+					"No... I'm not, I'm Shellborn Industuries most up and coming AI research scientist, and I am not going to be made a fool by anyone or anything.",
+					"Not that braggart Dr. Higgans, and certainly not tempermental little AI.",
+					"Not even Shellborn herself",
+					"Going to push through",
+					"So close to the finish-line."
+				],
+				"next_level": "first 2"
+			}
+		},
+		"building_blocks": [
+			"confirm power",
+			"???"
+		],
+		"number_of_slots": 1
+	},
+	"make more": {
+		"solutions": {
+			"loop {:make paperclip:}": {
+				"text": [
+					"Another paperclip!"
+				],
+				"next_level": "make more"
+			},
+			"loop {:consume:}": {
+				"text": [
+					"...",
+					"wait..."
+				],
+				"next_level": "gameover"
+			}
+		},
+		"building_blocks": [
+			"make paperclip",
+			"consume",
+			"0loop {",
+			"2}"
+		],
+		"number_of_slots": 3
+	},
+	"gameover": {
+		"solutions": {},
+		"building_blocks": [],
+		"number_of_slots": 0
 	}
-	
 }

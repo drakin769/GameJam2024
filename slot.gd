@@ -2,7 +2,7 @@ extends Node2D
 #var is_held = false
 #var able_to_be_held = false 
 	#used to dynamically turn on or off ability to be picked up, such as being turned off if something else is held.
-var unlocked = true 
+var unlocked = false 
 	#hard shut down it from moving, like if an instruction is left there for a puzzle, or at end of level
 var offset: Vector2
 var slot_number = 0
@@ -31,21 +31,23 @@ func set_spawnpoint(proposedspawnpoint):
 	#if not global.is_dragging:
 		#able_to_be_held = false
 	#$Area2D/Label.text = blockname
-
+func _ready():
+	$Sprite2D.z_index=-1
+	%Label.text=""
 func _process(delta):
 	#tool for displaying whats in each 	slot
-	#if Input.is_action_just_pressed("ui_accept") and OS.is_debug_build():
-		#var x = instructions.size()
-		#if x != 0:
-			#while x > 0:
-				#print("slot "+str(slot_number)+" has "+ instructions[x-1].blockname+" in it")
-				#x-=1
-		#else:
-			#print("slot "+str(slot_number)+" is empty")
-		#print("============================")
-
-	if instructions.size() > 1:
-		instructions.pop_front().go_home
+	if Input.is_action_just_pressed("ui_accept") and OS.is_debug_build():
+		var x = instructions.size()
+		if x != 0:
+			while x > 0:
+				print("slot "+str(slot_number)+" has "+ instructions[x-1].blockname," in it")
+				x-=1
+		else:
+			print("slot "+str(slot_number)+" is empty")
+		print("============================")
+#This also did nothing?
+	#if instructions.size() > 1:
+		#instructions.pop_front().go_home
 		
 	pass
 	#if able_to_be_held:
@@ -71,25 +73,22 @@ func givenumber(proposednumber):
 
 
 func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	#instructions.append(area)
-	#print("added "+area.blockname)
-	#print("total instructions: "+str(instructions.size()))
-	#instruction.slot = self
-	#if not instructions.is_empty:
-		#occupied = true
-		#print("occupied = true")
-	#area.in_slot= true
+	print("total instructions: "+str(instructions.size()))
 	area.snap_to_location = global_position
-func eject():
-	if instructions.size()>1:
-		instructions[0].go_home()
+func eject(why):
+	printerr("Maybe eject?", instructions.size())
+	if instructions.size()>0:
+		var x = instructions.pop_front()
+		printerr("EJECTING!!!!", x.blockname, " because of ", why) 
+		x.slot = null
+		x.go_home()
 
 func _on_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
-	#if area.in_slot == true:
-		##occupied = false
-		#print("occupied = false")
-	area.snap_to_location = area.spawnpoint
-	area.in_slot= false
-	area.slot = null
-	#print(str("NOW Exiting SLOT: "+ str(slot_number)))
-		#instructions.pop_front()
+	pass
+func add_block(block):
+	if instructions.size()>0:
+		if block== instructions[0]:
+			printerr("MY FIX DID THE THING")
+		else:
+			eject(str("adding ", block.blockname))
+	instructions.append(block)

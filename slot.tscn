@@ -24,9 +24,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visibility_layer = 2
 texture = ExtResource("3_hcr5n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 2
 position = Vector2(-45, 0)
 shape = SubResource("RectangleShape2D_0etul")
 

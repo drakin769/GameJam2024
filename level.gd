@@ -22,7 +22,7 @@ var slot_counter = 0
 var nanopacket = []
 var block_box = []
 var available_solutions
-var current_level = "first"
+var current_level = "first"#change me to start on different levels
 var levels = JSON.new()
 func clear_nanopacket():
 	while not nanopacket.is_empty():
@@ -55,15 +55,19 @@ func _ready():
 	
 func _process(delta):
 	if Input.is_action_just_pressed("q") and OS.is_debug_build():
-		clear_nanopacket()
-		clear_block_box()
-		print("level cleared!")
+		run_nanopacket()
+		return
 	elif Input.is_action_just_pressed("w") and OS.is_debug_build():
 		resolvelevel(available_solutions)
-		print("nanopacket ran!")
-	elif Input.is_action_just_pressed("ui_accept") and OS.is_debug_build():
-		DisplayServer.window_set_title("Testing")
+		printerr("nanopacket ran!")
+	#elif Input.is_action_just_pressed("ui_accept") and OS.is_debug_build():
+		#DisplayServer.window_set_title("📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎📎")
+		#
 	elif Input.is_action_just_pressed("e") and OS.is_debug_build():
+		setlevel()
+	elif Input.is_action_just_pressed("a") and OS.is_debug_build():
+		current_level = "first"
+		clear_level()
 		setlevel()
 		
 func resolvelevel(solutions:Dictionary):
@@ -90,7 +94,15 @@ func setlevel():
 	for x in levels[current_level].building_blocks:
 		create_instruction(x)
 	available_solutions= levels[current_level].solutions
-	#TODO: ADD in a check for certain levels to trigger the endgame
+	print("testing!",nanopacket.size())
+	place_blocks()
+	if current_level== "make more":
+		global.paperclips+=1
+	elif current_level== "gameover":
+		global.paperclips=0
+		global.mute= true
+		global.game_over = true
+		$Button.visible=false
 
 func file_load():
 	var file = FileAccess.open("res://data/levels.json", FileAccess.READ)
@@ -115,3 +127,20 @@ func create_slot():
 	nanopacket.append(new_slot)
 	slot_counter += 1
 	#new_slot.givename(blockname+str(instruction_counter))
+func place_blocks():
+	for block in block_box:
+		var x = block.blockname.left(1)
+		var y = int(x)
+		if (y > 0 and y<=9) or x=="0": # So, int("A String") returns 0 if not valid, so we must get values of 0 another way
+			block.global_position=slot_spawn_point[y]
+			block.unlocked = false
+			block.givename(block.blockname.right(-1))
+			nanopacket[y].unlocked = false
+			nanopacket[y].instructions.append(block)
+			block.lighten()
+			
+			
+
+
+func _on_button_pressed():
+	resolvelevel(available_solutions)

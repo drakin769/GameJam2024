@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://km6kufih6kn"]
+[gd_scene load_steps=16 format=3 uid="uid://km6kufih6kn"]
 
 [ext_resource type="Script" path="res://ui/user_interface.gd" id="1_paq1u"]
 [ext_resource type="PackedScene" uid="uid://ruehn53ruu7l" path="res://game.tscn" id="1_qqseu"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://ui/text.gd" id="4_hvxiw"]
 [ext_resource type="PackedScene" uid="uid://cn2tr6txdw08t" path="res://gameElements/volume_slider.tscn" id="5_n5lys"]
 [ext_resource type="Texture2D" uid="uid://dpjplte3sm8iv" path="res://images/lowerbackground (1).png" id="8_svuju"]
+[ext_resource type="PackedScene" uid="uid://bhq2q1261jbxa" path="res://credits.tscn" id="11_v24ke"]
 
 [sub_resource type="Theme" id="Theme_v8tjn"]
 
@@ -32,6 +33,20 @@ mouse_filter = 1
 theme = SubResource("Theme_v8tjn")
 color = Color(1, 1, 1, 0)
 script = ExtResource("1_paq1u")
+
+[node name="Credits" parent="." instance=ExtResource("11_v24ke")]
+modulate = Color(1, 1, 1, 0.721569)
+z_index = 500
+layout_mode = 2
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 6.0
+offset_right = 3.0
+offset_bottom = 6.0
+
+[node name="c_timer" type="Timer" parent="Credits"]
+wait_time = 1.457
+one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_qr5xe")
@@ -74,14 +89,12 @@ layout_mode = 2
 
 [node name="MonitorText" type="RichTextLabel" parent="HBoxContainer/consoleDisplay/MarginContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 1, 0, 0.203922)
 theme_override_fonts/normal_font = ExtResource("3_6qmbl")
-text = "> yolooo
-> I need moar paperclips"
+theme_override_font_sizes/normal_font_size = 17
 script = ExtResource("4_hvxiw")
 
 [node name="Timer" type="Timer" parent="HBoxContainer/consoleDisplay/MarginContainer/MonitorText"]
@@ -134,10 +147,11 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.724643, 0.724643, 0.724643, 1)
-text = "    Set volume: "
+text = "Set Volume:"
+vertical_alignment = 2
 
 [node name="Volume_slider" parent="PlayArea/HBoxContainer" instance=ExtResource("5_n5lys")]
-custom_minimum_size = Vector2(450, 29)
+custom_minimum_size = Vector2(360, 29)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_stretch_ratio = 0.4
@@ -145,3 +159,5 @@ bus_name = "Master"
 
 [node name="Game" parent="PlayArea" instance=ExtResource("1_qqseu")]
 position = Vector2(0, -281)
+
+[connection signal="timeout" from="Credits/c_timer" to="." method="_on_c_timer_timeout"]
