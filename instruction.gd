@@ -120,9 +120,11 @@ func _on_mouse_exited():
 
 func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	if not area.has_method("is_instruction"):
-		#if area.unlocked == true:
-		slot = area
-		print(str("NOW ENTERING SLOT: "+ str(area.slot_number)))
+		if area.unlocked == true or (area.unlocked == false and unlocked == false and global.level_lock == false):
+			slot = area
+			if unlocked == false:
+				area.unlocked = false
+			print(str("NOW ENTERING SLOT: "+ str(area.slot_number)))
 	pass
 func print_all():
 		print("instruction, blockname: ",blockname," is held: ", is_held, " able to be held ", able_to_be_held," unlocked ", unlocked		)

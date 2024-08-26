@@ -4,6 +4,8 @@ var border = Vector2(0,0)
 var game_over = false
 var paperclips=0
 var mute = false
+var level_lock = false
+
 
 ## Will add a new line of text to Dot matrix component.
 ## To add multiple lines, call this multiple times.

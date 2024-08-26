@@ -22,7 +22,7 @@ var slot_counter = 0
 var nanopacket = []
 var block_box = []
 var available_solutions
-var current_level = "first"#change me to start on different levels
+var current_level = "u turn"#change me to start on different levels
 var levels = JSON.new()
 func clear_nanopacket():
 	while not nanopacket.is_empty():
@@ -33,6 +33,7 @@ func clear_block_box():
 			
 # probablyt overkill, but might need to add things later
 func clear_level():
+	global.level_lock == false
 	clear_block_box()
 	clear_nanopacket()
 func run_nanopacket():
@@ -69,6 +70,8 @@ func _process(delta):
 		current_level = "first"
 		clear_level()
 		setlevel()
+	elif Input.is_action_just_pressed("click"):
+		global.level_lock == true
 		
 func resolvelevel(solutions:Dictionary):
 	var output = run_nanopacket()

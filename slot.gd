@@ -2,7 +2,7 @@ extends Node2D
 #var is_held = false
 #var able_to_be_held = false 
 	#used to dynamically turn on or off ability to be picked up, such as being turned off if something else is held.
-var unlocked = false 
+var unlocked = true 
 	#hard shut down it from moving, like if an instruction is left there for a puzzle, or at end of level
 var offset: Vector2
 var slot_number = 0
@@ -92,3 +92,5 @@ func add_block(block):
 		else:
 			eject(str("adding ", block.blockname))
 	instructions.append(block)
+	if block.unlocked == false:
+		unlocked = false

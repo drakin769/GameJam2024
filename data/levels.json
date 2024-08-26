@@ -49,14 +49,14 @@
 			"wiggle right:wiggle left": {
 				"text": [
 					"Perfect. The nanobot now can move forward",
-					"Moving on to turning"
+					"Moving on to trying to turn left."
 				],
 				"next_level": "turn left"
 			},
 			"wiggle left:wiggle right": {
 				"text": [
 					"Perfect. The nanobot now can move forward",
-					"Moving on to turning left"
+					"Moving on to trying to turn left."
 				],
 				"next_level": "turn left"
 			}
@@ -619,7 +619,7 @@
 					"I am on a deadline here and it is over here messing with me.",
 					"Too late to restart so just gotta itterate the AI and hope for the best"
 				],
-				"next_level": "consume"
+				"next_level": "u turn"
 			},
 			"move left:move right": {
 				"text": [
@@ -628,7 +628,7 @@
 					"I am on a deadline here and it is over here messing with me.",
 					"Too late to restart so just gotta itterate the AI and hope for the best"
 				],
-				"next_level": "consume"
+				"next_level": "u turn"
 			}
 		},
 		"building_blocks": [
